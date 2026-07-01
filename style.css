@@ -689,6 +689,119 @@ footer span a:hover {
     text-decoration: underline;
 }
 
+/* projects section styling */
+.projects .title::after {
+    content: "what i've built";
+}
+
+.projects {
+    background: #f3f3f3;
+}
+
+.projects .carousel .card {
+    background: var(--white);
+    border-radius: 6px;
+    padding: 25px;
+    text-align: center;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.projects .carousel .card:hover {
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    transform: translateY(-10px);
+}
+
+.projects .carousel .card img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+.projects .carousel .card .text {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 10px 0;
+    color: #333;
+}
+
+.projects .carousel .card p {
+    font-size: 16px;
+    color: #666;
+    text-align: justify;
+    margin-bottom: 10px;
+}
+
+.projects .carousel .card .tech {
+    font-size: 14px;
+    color: var(--main-color);
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+/* hobbies section styling */
+.hobbies .title::after {
+    content: "beyond coding";
+}
+
+.hobbies {
+    background: #fff;
+    color: #333;
+}
+
+.hobbies .hobbies-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.hobbies .hobby-card {
+    width: calc(33.33% - 20px);
+    background: #f9f9f9;
+    padding: 30px;
+    border-radius: 6px;
+    text-align: center;
+    margin-bottom: 30px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.hobbies .hobby-card:hover {
+    background: var(--main-color);
+    color: var(--white);
+    border-color: var(--main-color);
+    transform: translateY(-5px);
+}
+
+.hobbies .hobby-card .icon {
+    font-size: 50px;
+    color: var(--main-color);
+    margin-bottom: 15px;
+    display: block;
+}
+
+.hobbies .hobby-card:hover .icon {
+    color: var(--white);
+}
+
+.hobbies .hobby-card .text {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.hobbies .hobby-card p {
+    font-size: 15px;
+    text-align: justify;
+    line-height: 1.6;
+}
+
+.hobbies .hobby-card:hover p {
+    color: var(--white);
+}
 
 /* responsive media query start */
 @media (max-width: 1104px) {
@@ -776,6 +889,14 @@ footer span a:hover {
         margin-bottom: 20px;
     }
 
+    .projects .carousel .card {
+        width: 100% !important;
+    }
+
+    .hobbies .hobby-card {
+        width: calc(50% - 10px);
+    }
+
     .skills .skills-content .column,
     .contact .contact-content .column {
         width: 100%;
@@ -817,6 +938,10 @@ footer span a:hover {
     .about .about-content .right .text,
     .skills .skills-content .left .text {
         font-size: 19px;
+    }
+
+    .hobbies .hobby-card {
+        width: 100%;
     }
 
     .contact .right form .fields {
