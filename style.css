@@ -6,15 +6,37 @@
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 html {
     scroll-behavior: smooth;
 }
 
+body {
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
 :root {
     --main-color: rgb(20, 213, 220);
-    --white: #fff;
+    --white: #18a2d0;
+    
+    /* Light mode */
+    --bg-color: #fff;
+    --text-color: #333;
+    --card-bg: #f9f9f9;
+    --dark-section-bg: #f5f5f5;
+    --border-color: #ddd;
+}
+
+/* Dark mode */
+html.dark-mode {
+    --bg-color: #1a1a1a;
+    --text-color: #fff;
+    --card-bg: #2a2a2a;
+    --dark-section-bg: #111;
+    --border-color: #444;
 }
 
 /* custom scroll bar */
@@ -117,9 +139,17 @@ section .title::after {
 }
 
 .navbar .logo a {
-    color: var(--white);
+    color: var(--black);
     font-size: 35px;
     font-weight: 600;
+}
+
+html.dark-mode .navbar .logo a {
+    color: var(--white);
+}
+
+html:not(.dark-mode) .navbar .logo a {
+    color: #000;
 }
 
 .navbar .logo a span {
@@ -129,6 +159,10 @@ section .title::after {
 
 .navbar.sticky .logo a span {
     color: var(--white);
+}
+
+html:not(.dark-mode) .navbar.sticky .logo a span {
+    color: var(--main-color);
 }
 
 .navbar .menu li {
@@ -143,6 +177,14 @@ section .title::after {
     font-weight: 500;
     margin-left: 25px;
     transition: color 0.3s ease;
+}
+
+html:not(.dark-mode) .navbar .menu li a {
+    color: #333;
+}
+
+html:not(.dark-mode) .navbar .menu li a:hover {
+    color: var(--main-color);
 }
 
 .navbar .menu li a:hover {
@@ -191,6 +233,75 @@ section .title::after {
     filter: brightness(90%);
 }
 
+/* theme toggle styling */
+.theme-toggle {
+    margin-right: 20px;
+}
+
+.checkbox {
+    display: none;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    width: 60px;
+    height: 30px;
+    background: #ccc;
+    border-radius: 30px;
+    padding: 2px;
+    transition: background 0.3s ease;
+}
+
+.checkbox-label i {
+    position: absolute;
+    font-size: 14px;
+    color: var(--white);
+    z-index: 1;
+}
+
+.checkbox-label .fa-moon {
+    left: 8px;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.checkbox-label .fa-sun {
+    right: 8px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.checkbox-label .ball {
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    background: var(--white);
+    border-radius: 50%;
+    left: 2px;
+    top: 2px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+#theme-checkbox:checked + .checkbox-label {
+    background: var(--main-color);
+}
+
+#theme-checkbox:checked + .checkbox-label .ball {
+    transform: translateX(30px);
+}
+
+#theme-checkbox:checked + .checkbox-label .fa-moon {
+    opacity: 0;
+}
+
+#theme-checkbox:checked + .checkbox-label .fa-sun {
+    opacity: 1;
+}
+
 
 /* home section styling */
 .home {
@@ -202,6 +313,28 @@ section .title::after {
     background-size: cover;
     background-attachment: fixed;
     font-family: 'Ubuntu', sans-serif;
+}
+
+html.dark-mode .home {
+    background-color: #0a0a0a;
+    background-image: url("home.png");
+}
+
+html:not(.dark-mode) .home {
+    background: linear-gradient(135deg, #ffffff 0%, #f0f8ff 100%);
+    color: #333;
+}
+
+html:not(.dark-mode) .home .home-content .text-1 {
+    color: #333;
+}
+
+html:not(.dark-mode) .home .home-content .text-2 {
+    color: #000;
+}
+
+html:not(.dark-mode) .home .home-content .text-3 {
+    color: #333;
 }
 
 .home .max-width {
@@ -344,15 +477,31 @@ section .title::after {
     background: #111;
 }
 
+html:not(.dark-mode) .services,
+html:not(.dark-mode) .teams {
+    background: #f5f5f5;
+    color: #333;
+}
+
 .services .title::before,
 .teams .title::before {
     background: var(--white);
+}
+
+html:not(.dark-mode) .services .title::before,
+html:not(.dark-mode) .teams .title::before {
+    background: #333;
 }
 
 .services .title::after,
 .teams .title::after {
     background: #111;
     content: "what i provide";
+}
+
+html:not(.dark-mode) .services .title::after,
+html:not(.dark-mode) .teams .title::after {
+    background: #f5f5f5;
 }
 
 .services .serv-content .card {
@@ -365,8 +514,19 @@ section .title::after {
     transition: all 0.3s ease;
 }
 
+html:not(.dark-mode) .services .serv-content .card {
+    background: #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    color: #333;
+}
+
 .services .serv-content .card:hover {
     background: var(--main-color);
+}
+
+html:not(.dark-mode) .services .serv-content .card:hover {
+    background: var(--main-color);
+    color: var(--white);
 }
 
 .services .serv-content .card .box {
@@ -452,6 +612,10 @@ section .title::after {
     width: 100%;
     background: lightgrey;
     position: relative;
+}
+
+html.dark-mode .skills .skills-content .right .line {
+    background: #444;
 }
 
 .skills .skills-content .right .line::before {
@@ -603,6 +767,14 @@ section .title::after {
     color: #333;
 }
 
+html:not(.dark-mode) .contact .contact-content .info .sub-title {
+    color: #666;
+}
+
+html.dark-mode .contact .contact-content .info .sub-title {
+    color: #bbb;
+}
+
 .contact .right form .fields {
     display: flex;
 }
@@ -634,6 +806,21 @@ section .title::after {
     font-size: 17px;
     font-family: 'Poppins', sans-serif;
     transition: all 0.3s ease;
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+html.dark-mode .contact .right form .field input,
+html.dark-mode .contact .right form .textarea textarea {
+    background: #2a2a2a;
+    color: #fff;
+    border-color: #444;
+}
+
+html:not(.dark-mode) .contact .right form .field input,
+html:not(.dark-mode) .contact .right form .textarea textarea {
+    background: #fff;
+    color: #333;
 }
 
 .contact .right form .field input:focus,
@@ -698,6 +885,10 @@ footer span a:hover {
     background: #f3f3f3;
 }
 
+html.dark-mode .projects {
+    background: #111;
+}
+
 .projects .carousel .card {
     background: var(--white);
     border-radius: 6px;
@@ -708,17 +899,14 @@ footer span a:hover {
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
+html.dark-mode .projects .carousel .card {
+    background: #222;
+    color: #fff;
+}
+
 .projects .carousel .card:hover {
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     transform: translateY(-10px);
-}
-
-.projects .carousel .card img {
-    height: 200px;
-    width: 100%;
-    object-fit: cover;
-    border-radius: 6px;
-    margin-bottom: 15px;
 }
 
 .projects .carousel .card .text {
@@ -728,11 +916,19 @@ footer span a:hover {
     color: #333;
 }
 
+html.dark-mode .projects .carousel .card .text {
+    color: #fff;
+}
+
 .projects .carousel .card p {
     font-size: 16px;
     color: #666;
     text-align: justify;
     margin-bottom: 10px;
+}
+
+html.dark-mode .projects .carousel .card p {
+    color: #bbb;
 }
 
 .projects .carousel .card .tech {
@@ -752,6 +948,11 @@ footer span a:hover {
     color: #333;
 }
 
+html.dark-mode .hobbies {
+    background: #111;
+    color: #fff;
+}
+
 .hobbies .hobbies-content {
     display: flex;
     flex-wrap: wrap;
@@ -767,6 +968,13 @@ footer span a:hover {
     margin-bottom: 30px;
     transition: all 0.3s ease;
     border: 2px solid transparent;
+    color: #333;
+}
+
+html.dark-mode .hobbies .hobby-card {
+    background: #2a2a2a;
+    color: #fff;
+    border-color: #333;
 }
 
 .hobbies .hobby-card:hover {

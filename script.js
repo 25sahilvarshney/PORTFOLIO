@@ -70,4 +70,30 @@ $(document).ready(function(){
             }
         }
     });
+
+    // dark/light mode toggle
+    const themeCheckbox = document.getElementById('theme-checkbox');
+    const htmlElement = document.documentElement;
+
+    // Check for saved theme preference or default to 'dark'
+    const currentTheme = localStorage.getItem('theme') || 'dark';
+    
+    if (currentTheme === 'dark') {
+        htmlElement.classList.add('dark-mode');
+        themeCheckbox.checked = true;
+    } else {
+        htmlElement.classList.remove('dark-mode');
+        themeCheckbox.checked = false;
+    }
+
+    // Listen for toggle changes
+    themeCheckbox.addEventListener('change', function() {
+        if (this.checked) {
+            htmlElement.classList.add('dark-mode');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            htmlElement.classList.remove('dark-mode');
+            localStorage.setItem('theme', 'light');
+        }
+    });
 });
